@@ -1,0 +1,50 @@
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(2,OUTPUT);
+  pinMode(3,INPUT);
+}
+
+float press_ms=0;
+
+void loop() {
+  if (digitalRead(3)==HIGH){
+    digitalWrite(2,HIGH);
+    delay(100);
+    press_ms+=100;
+    Serial.println(press_ms);
+  }else press_ms=0;
+
+  if (press_ms>3000){
+    digitalWrite(2, HIGH);
+    delay(1000);
+    digitalWrite(2, LOW);
+    delay(1000);
+    press_ms+=100;
+    
+  }
+
+    if (press_ms>4000){
+    digitalWrite(2, HIGH);
+    delay(100);
+    digitalWrite(2, LOW);
+    delay(100);
+  }
+
+
+
+  // put your main code here, to run repeatedly:
+  /*
+  while(digitalRead(3)==HIGH){
+    delay(100);
+    press_ms+=100;
+    if (press_ms>1000){  
+      digitalWrite(2, HIGH);
+      delay(1000);
+      digitalWrite(2, LOW);
+      delay(1000);
+  
+    }
+  }
+  */
+
+}
